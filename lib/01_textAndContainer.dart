@@ -33,8 +33,7 @@ void main() {
         //저장된 ThemeColor를 불러와서 적용
         backgroundColor: ThemeData().colorScheme.primary,
       ),
-      body: TestWidget(),
-
+      body: TestContainer(),
     ),
   ));
 }
@@ -46,11 +45,47 @@ class TestWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Text(
-      'Grace Great',
-      style: TextStyle(
-        fontSize: 45,
-        color: Colors.blue,
-      ),
-    ));
+          'Grace Great',
+          style: TextStyle(
+            fontSize: 45,
+            color: Colors.blue,
+          ),
+        ));
   }
 }
+
+//Container 테두리를 정하고 그 안에 원하는 컨텐츠를 넣을 수 있다.
+//margin: 바깥여백 EdgeInsets.all(30)
+// padding: 안쪽여백 EdgeInsets.fromLTRB(10, 20, 30, 40),
+//Row(), Column() 이런덴 안되고 Container() 에만 여백을 줄 수 있다.
+//컨테이너는 하나의 차일드를 가질 수 있다.
+class TestContainer extends StatelessWidget {
+  const TestContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(child:
+      Container(
+        width: 300,//double.infinity,
+        height:300,
+        color: Colors.green,
+        child: Align(
+          //child에 Container를 바로사용하면 겹쳐서 보임
+          alignment: Alignment.center,
+          child: Container(
+            width: 200,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.yellow,width: 5,style: BorderStyle.solid),
+
+            ),
+            child: Center(child: Text('1211231231233')),
+                ),
+        ),
+      )
+    );
+  }
+}
+
