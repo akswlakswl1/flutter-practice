@@ -13,12 +13,91 @@ void main() {
         //저장된 ThemeColor를 불러와서 적용
         backgroundColor: ThemeData().colorScheme.primary,
       ),
-      body: MakeRow(),
+      body: MakeScroll(),
     ),
   ));
 }
 
-//2. 상하 좌우 배치해보기
+//3.스크롤 적용하기
+class MakeScroll extends StatelessWidget {
+  const MakeScroll({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        children: [
+          Container(
+            width: 300,
+            height: 300,
+            color: Colors.cyan,
+            child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 200,
+                      color: Colors.red,
+                      child: Center(
+                        child: Text("11111"),
+                      ),
+                    ),
+                    Container(
+                      width: 300,
+                      color: Colors.yellow,
+                      child: Center(
+                        child: Text("222222"),
+                      ),
+                    ),
+                    Container(
+                      width: 300,
+                      color: Colors.orange,
+                      child: Center(
+                        child: Text("3333"),
+                      ),
+                    )
+                  ],
+                )),
+          ),
+          Container(
+            width: 300,
+            height: 300,
+            color: Colors.brown,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.all((20)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 100,
+                    color: Colors.blue,
+                  ),
+                  Container(
+                    height: 200,
+                    color: Colors.yellow,
+                  ),
+                  Container(
+                    height: 400,
+                    color: Colors.green,
+                  ),Container(
+                    height: 100,
+                    color: Colors.greenAccent,
+                  ),],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+//2.좌우 배치해보기
 //Row는 children을 가진다.
 //Column을 컨테이너로 감싸고 Child에 Row를 사용하면 수평
 
@@ -32,7 +111,6 @@ class MakeRow extends StatelessWidget {
       height: 200,
       color: Colors.yellow,
       child: Row(
-
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly, //시작점
         crossAxisAlignment: CrossAxisAlignment.center, //세로

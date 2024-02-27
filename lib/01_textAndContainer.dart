@@ -55,6 +55,7 @@ class TestWidget extends StatelessWidget {
 }
 
 //Container 테두리를 정하고 그 안에 원하는 컨텐츠를 넣을 수 있다.
+//Container는 크기를 잡아주는 위젯으로 감싸주어야한다.
 //margin: 바깥여백 EdgeInsets.all(30)
 // padding: 안쪽여백 EdgeInsets.fromLTRB(10, 20, 30, 40),
 //Row(), Column() 이런덴 안되고 Container() 에만 여백을 줄 수 있다.
