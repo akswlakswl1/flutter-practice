@@ -13,9 +13,40 @@ void main() {
         //저장된 ThemeColor를 불러와서 적용
         backgroundColor: ThemeData().colorScheme.primary,
       ),
-      body: MakeScroll(),
+      body: MakeFlexibleExpanded(),
     ),
   ));
+}
+
+class MakeFlexibleExpanded extends StatelessWidget {
+  const MakeFlexibleExpanded({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      // Container(width: double.infinity,height: 200,color: Colors.red,),
+      children: [
+        // Container(
+        //   width: double.infinity,
+        //   height: 200,
+        //   color: Colors.red,
+        // ),
+
+        //flex는 비율
+        // Flexible(flex: 2, child: Container(color: Colors.cyanAccent)),
+        // Flexible(flex: 2, child: Container(color: Colors.blue)),
+        // Flexible(flex: 2, child: Container(color: Colors.green)),
+        // Flexible(flex: 2, child: Container(color: Colors.yellow)),
+
+        //여기서는 Expanded 와 Flexible가 같음
+        // Expanded(child: Container(color: Colors.green,)),
+        Expanded(flex: 1, child: Container(color: Colors.yellow,)),
+        Flexible(child: Container(color: Colors.green)),
+        Flexible(child: Container(color: Colors.yellow)),
+
+      ],
+    );
+  }
 }
 
 //3.스크롤 적용하기
@@ -84,10 +115,12 @@ class MakeScroll extends StatelessWidget {
                   Container(
                     height: 400,
                     color: Colors.green,
-                  ),Container(
+                  ),
+                  Container(
                     height: 100,
                     color: Colors.greenAccent,
-                  ),],
+                  ),
+                ],
               ),
             ),
           )
