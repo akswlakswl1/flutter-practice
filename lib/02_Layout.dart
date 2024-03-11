@@ -13,11 +13,85 @@ void main() {
         //저장된 ThemeColor를 불러와서 적용
         backgroundColor: ThemeData().colorScheme.primary,
       ),
-      body: MakeFlexibleExpanded(),
+      body: MakeStack(),
     ),
   ));
 }
 
+class MakeStack extends StatelessWidget {
+  const MakeStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 500,
+          height: 500,
+          color: Colors.red,
+          child: Text(
+            '123123',
+            style: TextStyle(
+              fontSize: 45,
+              color: Colors.blue,
+            ),
+          ),
+        ),
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.brown,
+        ),
+        Align( //피벗 할당 하고 싶을 때
+          alignment: Alignment(-1, -1),
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.yellow,
+          ),
+        ),
+        Positioned( //원하는 위치를 지정하고 싶을때
+          left: 10,
+            child: Container(
+              width: 200,
+              height: 200,
+              color: Colors.lightGreen,
+            )
+        ),
+        Align(
+          alignment: Alignment(0,-1),
+          child: Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.blue, // 배경색
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5), // 그림자 색상 및 투명도
+                  spreadRadius: 5, // 그림자 전파 범위
+                  blurRadius: 7, // 그림자 흐림 정도
+                  offset: Offset(0, 3), // 그림자의 위치 (가로, 세로)
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                '123123',
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white54
+
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+//Flexible, Expanded
 class MakeFlexibleExpanded extends StatelessWidget {
   const MakeFlexibleExpanded({super.key});
 
@@ -40,10 +114,13 @@ class MakeFlexibleExpanded extends StatelessWidget {
 
         //여기서는 Expanded 와 Flexible가 같음
         // Expanded(child: Container(color: Colors.green,)),
-        Expanded(flex: 1, child: Container(color: Colors.yellow,)),
+        Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.yellow,
+            )),
         Flexible(child: Container(color: Colors.green)),
         Flexible(child: Container(color: Colors.yellow)),
-
       ],
     );
   }
