@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+//Stateless Widget Lifecycle
+//Create -> build() -> dispose
+
+//Stateful Widget Lifecycle
+//Cteate -> Cteate State<Widget> -> InitState() -> build() -> deactivate -> dispose() -> Dispose
+//                                                  ㄴ> SetState()
+//상태관리가 복잡하기 때문에 여러 상태관리 모델이 오픈소스로 개발되어 공유되고 있다.
+//Riverpod, BLoc, GetX, Provider, Redux...
+
+
 void main() {
   runApp(MaterialApp(
     title: 'app Name',
